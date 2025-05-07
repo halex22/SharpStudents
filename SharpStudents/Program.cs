@@ -32,8 +32,18 @@
 
             List<Student> studentList = [s1, s2, s3];   
 
+            foreach (Student student in studentList)
+            {
+                Console.WriteLine(student.ToString());
+                Console.WriteLine(student.Mean);
+            }
 
-            Console.WriteLine(s1.CalcolateMean());
+            double classMean = studentList.Average(s => s.Mean);
+            Console.WriteLine($"all students mean: {classMean.ToString()}");
+
+            Teacher teacher = new() { Name = "Joe", Subject = "Cooking", Students = studentList };
+            Console.WriteLine(teacher.ToString());    
+
         }
     }
 }

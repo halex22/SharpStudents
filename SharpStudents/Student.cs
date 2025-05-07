@@ -9,23 +9,18 @@ namespace SharpStudents
     internal class Student
     {
         private List<int> _marks = []; 
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public required string Name { get; set; }
+        public required string Surname { get; set; }
         public string Gender { get; set; }
         public int Yob { get; set; }
-        public List<int>? Marks {
+        public List<int> Marks {
             get => _marks;
-            set => _marks = value;
+            set => _marks = value ?? [];
         }
 
-        public void ToString() { }
+        public double Mean => _marks.Count == 0 ? 0 : _marks.Average();
 
-        public double CalcolateMean()
-        {
-            return this._marks.Sum() / (double) this._marks.Count;
-        }
-
-        
+        public string ToString() => $"student name: {Name} {Surname}\nYear of Birth: {Yob}";
 
     }
 }
